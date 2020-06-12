@@ -12,8 +12,10 @@ endif(NOT CMAKE_BUILD_TYPE)
 
 
 add_library(PocketFFT STATIC
-  pocketfft.c
+  pocketfft_double.c pocketfft_single.c
 )
+
+target_compile_options(PocketFFT PRIVATE -Werror -Wall -Wextra -pedantic-errors)
 
 set_property(TARGET PocketFFT APPEND PROPERTY INTERFACE_INCLUDE_DIRECTORIES
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
